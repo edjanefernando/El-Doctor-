@@ -4,10 +4,10 @@
 * Consolidation Duration: 3 day 
 * Deadline: 12/04/2024 
 * Participants: : solo
-
+<font color="red">
 # The mission
 There exist a plethora of amazing monitoring tools out there, some of which go as far as offering a full blown graphical dashboard collecting metrics on your entire system in a single unified interface, isn't it great?! Well, this challenge will have you throw all those pre-made solution out the window to create your own monitoring script!
-
+</font>
 You will have multiple days to make it as useful (collect the data you want or need) and fancy (interactive interface, features, ...) as possible, the goal is for you to be creative and make it your own! As such, we won't give you clear instructions to follow nor specific features to implement. Still, we are no monster so here are some idea to inspire you:
 
 # Make an interactive curses interface (or similar) for your script.
@@ -49,7 +49,7 @@ It provides valuable insights into the health and status of the system by gather
 Additionally, it includes functionality for sending email notifications for critical conditions using Postfix with a Gmail account.
 
 https://youtu.be/UuEx_JwNI2s?si=vW2iCzsTrsDJyHxW
-
+```
  bash
  !/bin/bash
 
@@ -164,7 +164,7 @@ crontab mycron
 rm mycron
 
 
-
+```
 
 
 Modify Configuration: Update the script (monitoring_script.sh) with your desired configurations such as the path to store the CSV file and your email address.
