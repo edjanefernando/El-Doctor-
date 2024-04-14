@@ -5,9 +5,13 @@
 * Deadline: 12/04/2024 
 * Participants: : solo
 <font color="red">
+
 # The mission
 There exist a plethora of amazing monitoring tools out there, some of which go as far as offering a full blown graphical dashboard collecting metrics on your entire system in a single unified interface, isn't it great?! Well, this challenge will have you throw all those pre-made solution out the window to create your own monitoring script!
+
 </font>
+
+
 You will have multiple days to make it as useful (collect the data you want or need) and fancy (interactive interface, features, ...) as possible, the goal is for you to be creative and make it your own! As such, we won't give you clear instructions to follow nor specific features to implement. Still, we are no monster so here are some idea to inspire you:
 
 # Make an interactive curses interface (or similar) for your script.
@@ -50,70 +54,68 @@ Additionally, it includes functionality for sending email notifications for crit
 
 https://youtu.be/UuEx_JwNI2s?si=vW2iCzsTrsDJyHxW
 ```
- bash
- !/bin/bash
+#!/bin/bash
 
- This script monitors server metrics and sends email notifications for critical conditions.
+# This script monitors server metrics and sends email notifications for critical conditions.
 
- Define the CSV file path
+# Define the CSV file path
 CSV_FILE="/path/to/metrics.csv"
 
- Define your email address
+# Define your email address
 EMAIL="your_email@example.com"
 
- Function to send email notification
+# Function to send email notification
 send_notification() {
     local subject="$1"
     local message="$2"
     echo "$message" | mail -s "$subject" "$EMAIL"
 }
 
- Date and Time
- Append server monitoring report timestamp to CSV file
+# Date and Time
+# Append server monitoring report timestamp to CSV file
 echo "## Server Monitoring Report - $(date +"%F %k:%M:%S %Z")" >> "$CSV_FILE"
 
- OS Information
- Append OS information to CSV file
+# OS Information
+# Append OS information to CSV file
 echo "" >> "$CSV_FILE"
 echo "## OS Information" >> "$CSV_FILE"
 echo "  Hostname: $(hostname | cut -f 1 -d.)" >> "$CSV_FILE"
 echo "  Architecture: $(uname -m)" >> "$CSV_FILE"
 echo "  Kernel: $(uname -r)" >> "$CSV_FILE"
 
-Services
- Append running services to CSV file
+# Services
+# Append running services to CSV file
 echo "" >> "$CSV_FILE"
 echo "## Services" >> "$CSV_FILE"
 sudo systemctl list-units --type=service | grep "running" | sed -e 's/loaded.*running.*/running/g' -e 's/.service//g' >> "$CSV_FILE"
 
- Internet Connectivity
- Check internet connectivity and append status to CSV file
+# Internet Connectivity
+# Check internet connectivity and append status to CSV file
 echo "" >> "$CSV_FILE"
 echo "## Internet Connectivity" >> "$CSV_FILE"
 ping -c 1 google.com &> /dev/null && echo "  Status: Connected" || echo "  Status: Disconnected" >> "$CSV_FILE"
 
- IP Addresses
- Append public and private IP addresses to CSV file
+# IP Addresses
+# Append public and private IP addresses to CSV file
 echo "" >> "$CSV_FILE"
 echo "## IP Addresses" >> "$CSV_FILE"
 echo "  Public IP: $(curl -s ipecho.net/plain;echo)" >> "$CSV_FILE"
 echo "  Private IP: $(/sbin/ip -o -4 addr list enp0s8 | awk '{print $4}' | cut -d/ -f1)" >> "$CSV_FILE"
 
- DNS Server
- Append DNS server to CSV file
+# DNS Server
+# Append DNS server to CSV file
 echo "" >> "$CSV_FILE"
 echo "## DNS Server" >> "$CSV_FILE"
 cat /etc/resolv.conf | grep nameserver | awk '{print $2}' >> "$CSV_FILE"
 
- Network Services
- Append network services to CSV file
+# Network Services
+# Append network services to CSV file
 echo "" >> "$CSV_FILE"
 echo "## Network Services" >> "$CSV_FILE"
 sudo ss -tlnp | tail -n+2 | tr -s ' ' | cut -d ' ' -f 1,4,7 | column -ts ' ' >> "$CSV_FILE"
 
-
-CPU Usage
-Check CPU usage and append to CSV file
+# CPU Usage
+# Check CPU usage and append to CSV file
 echo "" >> "$CSV_FILE"
 echo "## CPU Usage" >> "$CSV_FILE"
 sar -P ALL -h 0 | tail -n +3 | tr -s ' ' | tr '[:lower:]' '[:upper:]' | cut -d ' ' -f 2,3,5,8 | sed -e '1 a \ ' -e 's/ALL/\*/g' | column -tes ' ' >> "$CSV_FILE"
@@ -123,8 +125,8 @@ if [ $cpu_usage -gt 80 ]; then
     send_notification "CPU Usage Alert" "CPU usage is above 80%."
 fi
 
- Memory Usage
- Check memory usage and append to CSV file
+# Memory Usage
+# Check memory usage and append to CSV file
 echo "" >> "$CSV_FILE"
 echo "## Memory Usage" >> "$CSV_FILE"
 mem_total=$(grep MemTotal /proc/meminfo | awk '{print $2}')
@@ -135,8 +137,8 @@ if [ $mem_percent -gt 80 ]; then
     send_notification "Memory Usage Alert" "Memory usage is above 80%."
 fi
 
- Storage Usage
- Check storage usage and append to CSV file
+# Storage Usage
+# Check storage usage and append to CSV file
 echo "" >> "$CSV_FILE"
 echo "## Storage Usage" >> "$CSV_FILE"
 df -h >> "$CSV_FILE"
@@ -145,20 +147,20 @@ if [ $storage_usage -gt 80 ]; then
     send_notification "Storage Usage Alert" "Storage usage is above 80%."
 fi
 
- Disk I/O
- Append disk I/O to CSV file
+# Disk I/O
+# Append disk I/O to CSV file
 echo "" >> "$CSV_FILE"
 echo "## Disk I/O" >> "$CSV_FILE"
 iostat -d, >> "$CSV_FILE"
 
- Send weekly report via email
- If it's Sunday, send the weekly server monitoring report via email
+# Send weekly report via email
+# If it's Sunday, send the weekly server monitoring report via email
 if [ $(date +%u) -eq 7 ]; then
     mail -s "Weekly Server Monitoring Report" "$EMAIL" < "$CSV_FILE"
 fi
 
- Schedule execution using cron
- Add cron job to execute this script every hour
+# Schedule execution using cron
+# Add cron job to execute this script every hour
 echo "0 * * * * /bin/bash /path/to/monitoring_script.sh" >> mycron
 crontab mycron
 rm mycron
