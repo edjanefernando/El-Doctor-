@@ -4,6 +4,8 @@
 * Consolidation Duration: 3 day 
 * Deadline: 12/04/2024 
 * Participants: : solo
+
+
 <font color="red">
 
 # The mission
