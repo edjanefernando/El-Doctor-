@@ -8,8 +8,6 @@
 * Participants: : solo
 
 
-<font color="red">
-
 # The mission
 There exist a plethora of amazing monitoring tools out there, some of which go as far as offering a full blown graphical dashboard collecting metrics on your entire system in a single unified interface, isn't it great?! Well, this challenge will have you throw all those pre-made solution out the window to create your own monitoring script!
 
