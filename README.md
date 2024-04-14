@@ -30,7 +30,7 @@ In order to validate this challenge, you must have a repository containing your 
 Even though the modern IT ecosystem is full of wonderfully designed tools it's always a good thing to know how it works under the hood and to be able to spin up your own solution when needed. Sometimes a bazooka, no matter how pretty it is, is a bit overkill to hit the target!
 
 
-Server Monitoring Script
+***Server Monitoring Script***
 This repository contains a Bash script (monitoring_script.sh) designed to monitor server metrics and store them in a CSV file. 
 The script is intended to be run periodically using a scheduler like cron.
 
@@ -45,9 +45,9 @@ The script is intended to be run periodically using a scheduler like cron.
 
 
 
-** This Bash script is designed to monitor various aspects of system performance, such as CPU usage, memory usage, disk usage, network usage, and system uptime. 
+**This Bash script is designed to monitor various aspects of system performance, such as CPU usage, memory usage, disk usage, network usage, and system uptime. 
 It provides valuable insights into the health and status of the system by gathering relevant metrics and displaying them in a human-readable format. 
-Additionally, it includes functionality for sending email notifications for critical conditions using Postfix with a Gmail account. **
+Additionally, it includes functionality for sending email notifications for critical conditions using Postfix with a Gmail account.**
 
 https://youtu.be/UuEx_JwNI2s?si=vW2iCzsTrsDJyHxW
 ```
@@ -166,7 +166,7 @@ rm mycron
 ```
 
 
-** Modify Configuration: Update the script (monitoring_script.sh) with your desired configurations such as the path to store the CSV file and your email address. **
+**Modify Configuration: Update the script (monitoring_script.sh) with your desired configurations such as the path to store the CSV file and your email address.**
 
 Make Executable: Make the script executable:
 chmod +x monitoring_script.sh
@@ -189,8 +189,8 @@ mail command for sending email notifications
 - Run the script by executing: ./MonitoringScript.sh
 - The script will execute various monitoring functions sequentially and display the results. Email notifications will be sent for critical conditions.
 
-* Contribution:
-Contributions are welcome! Feel free to submit issues, feature requests, or pull requests to improve the functionality of this script.
+***Contribution:
+Contributions are welcome! Feel free to submit issues, feature requests, or pull requests to improve the functionality of this script.***
 
 
 
