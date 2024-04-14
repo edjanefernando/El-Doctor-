@@ -49,10 +49,10 @@ It provides valuable insights into the health and status of the system by gather
 Additionally, it includes functionality for sending email notifications for critical conditions using Postfix with a Gmail account.
 
 https://youtu.be/UuEx_JwNI2s?si=vW2iCzsTrsDJyHxW
-<span style="color:red">
+
  bash
  !/bin/bash
-</span>
+
  This script monitors server metrics and sends email notifications for critical conditions.
 
  Define the CSV file path
