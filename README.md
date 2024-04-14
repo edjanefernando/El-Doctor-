@@ -1,4 +1,4 @@
-<font color="red">
+
 
 # El-Doctor-
 * El Doctor - A monitoring tool to rule them all! 
@@ -10,8 +10,6 @@
 
 # The mission
 There exist a plethora of amazing monitoring tools out there, some of which go as far as offering a full blown graphical dashboard collecting metrics on your entire system in a single unified interface, isn't it great?! Well, this challenge will have you throw all those pre-made solution out the window to create your own monitoring script!
-
-</font>
 
 
 You will have multiple days to make it as useful (collect the data you want or need) and fancy (interactive interface, features, ...) as possible, the goal is for you to be creative and make it your own! As such, we won't give you clear instructions to follow nor specific features to implement. Still, we are no monster so here are some idea to inspire you:
@@ -37,22 +35,19 @@ This repository contains a Bash script (monitoring_script.sh) designed to monito
 The script is intended to be run periodically using a scheduler like cron.
 
 * Features:
-Hourly Metric Collection: The script collects various server metrics such as CPU usage, memory usage, storage usage, network services, and more.
+- Hourly Metric Collection: The script collects various server metrics such as CPU usage, memory usage, storage usage, network services, and more.
 
-CSV File Storage: Metrics are appended to a CSV file at regular intervals. This allows for easy tracking and analysis of server performance over time.
+- CSV File Storage: Metrics are appended to a CSV file at regular intervals. This allows for easy tracking and analysis of server performance over time.
 
-Email Notifications: Email notifications are sent for critical conditions such as high CPU usage, memory usage, or storage usage.
+- Email Notifications: Email notifications are sent for critical conditions such as high CPU usage, memory usage, or storage usage.
 
-Weekly Report: A weekly server monitoring report is emailed every Sunday, providing a summary of server performance throughout the week.
-
-Usage:
-Clone Repository: Clone this repository to your server:
+- Weekly Report: A weekly server monitoring report is emailed every Sunday, providing a summary of server performance throughout the week.
 
 
 
-This Bash script is designed to monitor various aspects of system performance, such as CPU usage, memory usage, disk usage, network usage, and system uptime. 
+** This Bash script is designed to monitor various aspects of system performance, such as CPU usage, memory usage, disk usage, network usage, and system uptime. 
 It provides valuable insights into the health and status of the system by gathering relevant metrics and displaying them in a human-readable format. 
-Additionally, it includes functionality for sending email notifications for critical conditions using Postfix with a Gmail account.
+Additionally, it includes functionality for sending email notifications for critical conditions using Postfix with a Gmail account. **
 
 https://youtu.be/UuEx_JwNI2s?si=vW2iCzsTrsDJyHxW
 ```
@@ -171,7 +166,7 @@ rm mycron
 ```
 
 
-Modify Configuration: Update the script (monitoring_script.sh) with your desired configurations such as the path to store the CSV file and your email address.
+** Modify Configuration: Update the script (monitoring_script.sh) with your desired configurations such as the path to store the CSV file and your email address. **
 
 Make Executable: Make the script executable:
 chmod +x monitoring_script.sh
@@ -186,17 +181,16 @@ cron
 0 * * * * /path/to/monitoring_script.sh
 Replace /path/to/monitoring_script.sh with the actual path to your Bash script.
 
-Requirements:
-Bash shell
+* Requirements:
 cron scheduler
 mail command for sending email notifications
 - Make the script executable by running: chmod +x MonitoringScript.sh
 - Configure Postfix with your Gmail account following the instructions here
 - Run the script by executing: ./MonitoringScript.sh
 - The script will execute various monitoring functions sequentially and display the results. Email notifications will be sent for critical conditions.
-Contribution:
+
+* Contribution:
 Contributions are welcome! Feel free to submit issues, feature requests, or pull requests to improve the functionality of this script.
 
-License:
-This project is licensed under the MIT License.
+
 
